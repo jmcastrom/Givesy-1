@@ -29,6 +29,19 @@ class Product(models.Model):
     title = models.CharField(max_length=30)
     decription = models.TextField(blank=False, null = False)
     user = models.ForeignKey("User", on_delete=models.CASCADE)
+    
+    def create_product(self):
+        super().save()
+    
+    def edit_product(self):
+        super().save()
+    
+    def delete_product(self):
+        super().delete()
+    
+    def get_product(self):
+        self.objects.get(self)
+    
     def __str__(self):
         return f"Product: {self.title}"
 
@@ -36,5 +49,17 @@ class Image(models.Model):
     image = models.ImageField()
     product = models.ForeignKey("Product", on_delete=models.CASCADE)
 
+    def create_image(self):
+        super().save()
+    
+    def edit_image(self):
+        super().save()
+    
+    def delete_image(self):
+        super().delete()
+    
+    def get_image(self):
+        self.objects.get(self)
+    
     def __str__(self):
         return f"image for product: {self.product.title}"
